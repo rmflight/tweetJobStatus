@@ -3,5 +3,5 @@
   dataFile <- system.file("data/oauth_cache.RData", package="rmfNotifier")
   load(dataFile, cachedToken)
   assign("oauth_token", cachedToken$local_cache, envir=twitteR:::oauth_cache)
-  print("I did it!")
+  rm(cachedToken)
 }
