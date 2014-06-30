@@ -1,0 +1,10 @@
+Package: rmfNotifier
+Type: Package
+Title: Notifies @rmflight
+Version: 0.0.1
+Author: Robert M Flight <rflight79@gmail.com>
+Maintainer: Robert M Flight <rflight79@gmail.com>
+Description: Sends a tweet to @rmflight with a message
+License: CC0
+Imports: twitteR
+VignetteBuilder: knitr
