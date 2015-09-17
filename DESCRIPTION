@@ -1,10 +1,10 @@
-Package: rmfNotifier
+Package: tweetJobStatus
 Type: Package
-Title: Notifies @rmflight
-Version: 0.0.1
+Title: Notify users on job status with app
+Version: 0.2.0
 Author: Robert M Flight <rflight79@gmail.com>
 Maintainer: Robert M Flight <rflight79@gmail.com>
-Description: Sends a tweet to @rmflight with a message
+Description: Sends a tweet to various users with a job status
 License: CC0
-Imports: twitteR
+Imports: twitteR, lubridate
 VignetteBuilder: knitr
