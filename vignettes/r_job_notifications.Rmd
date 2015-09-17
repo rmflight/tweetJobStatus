@@ -63,7 +63,7 @@ tweet("@username this is a test") # check that you see notifications, change @us
 And then save the cache for later use.
 
 ```{r savecache, eval=FALSE}
-local_cache <- get("oauth_tken", twitteR:::oauth_cache) # saves the oauth token so we can reuse it
+local_cache <- get("oauth_token", twitteR:::oauth_cache) # saves the oauth token so we can reuse it
 save(local_cache, file="data/oauth_cache.RData")
 ```
 
