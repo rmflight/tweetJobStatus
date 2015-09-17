@@ -58,7 +58,17 @@ save(local_cache, file="data/oauth_cache.RData")
 ```
 devtools::install() # or Build & Reload
 tweetJobStatus::jobNotify(jobID = "test", userID = "@youruserid")
+
+testFunction <- function(x){
+  stopifnot(!is.null(x))
+  x
+}
+
+tweetJobStatus::jobNotify(testFunction(NULL), "test null", "@youruserid")
+tweetJobStatus::jobNotify(testFunction(1), "test null", "@youruserid")
 ```
+
+You can also add an argument `testTweet = TRUE` to see what the output looks like without actually sending tweets.
 
 ## Make @youruserid Default
 
