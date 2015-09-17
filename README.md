@@ -2,6 +2,10 @@
 
 This package enables the user to use a Twitter app to send job notification updates. See [this post](http://rmflight.github.io/posts/2014/06/r_job_notifications_twitter.html) for the original incarnation.
 
+## WARNING
+
+Dont EVER, EVER, EVER commit the `data/local_cache.RData` file that gets created below. This file is listed in the `.gitignore` file, which is actually included in this *git* repo for a reason. If someone gets ahold of your `oauth` cache, they can then tweet from your app. This is largely why I recommend creating a separate user and app to tweet from, and *NOT* associate credentials with your own twitter profile.
+
 ## Installation
 
 This is a little different, because it depends on caching **oauth** credentials and storing them as part of the package itself, so it is a little bit more complicated.
