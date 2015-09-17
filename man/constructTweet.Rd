@@ -2,7 +2,7 @@
 % Please edit documentation in R/notifyFunctions.R
 \name{constructTweet}
 \alias{constructTweet}
-\title{constructs and checks tweets}
+\title{notify after}
 \usage{
 constructTweet(userID, jobID, jobStatus, dateString, charAllow = 140)
 }
@@ -21,6 +21,11 @@ constructTweet(userID, jobID, jobStatus, dateString, charAllow = 140)
 character string
 }
 \description{
+Instead of wrapping the function call into the tweet notify call, call it after
+and check for any errors using \code{geterrmessage}.
+constructs and checks tweets
+}
+\details{
 given a userID, jobID, status text and datestring, constructs a tweet where the tweet
 length is <= 140 characters, trimming the jobID as necessary to make everything fit.
 }

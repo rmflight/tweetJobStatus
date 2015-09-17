@@ -4,15 +4,15 @@
 \alias{jobNotify}
 \title{notifies job status}
 \usage{
-jobNotify(jobRun = function() { }, jobID, userID = "@rmflight",
-  addNow = TRUE, testTweet = FALSE)
+jobNotify(jobRun = function() { }, jobID, userID = "", addNow = TRUE,
+  testTweet = FALSE)
 }
 \arguments{
-\item{jobRun}{the function call to evaluate}
+\item{jobRun}{the function call to evaluate (default is empty function)}
 
 \item{jobID}{text string to associate with job call}
 
-\item{userID}{the users to notify (default is rmflight)}
+\item{userID}{the users to notify (default is "")}
 
 \item{addNow}{add current date-time to tweet text}
 
