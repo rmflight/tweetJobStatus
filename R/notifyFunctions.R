@@ -2,15 +2,15 @@
 #' 
 #' sends tweets to users about the job status
 #' 
-#' @param jobRun the function call to evaluate
+#' @param jobRun the function call to evaluate (default is empty function)
 #' @param jobID text string to associate with job call
-#' @param userID the users to notify (default is @rmflight)
+#' @param userID the users to notify (default is rmflight)
 #' @param addNow add current date-time to tweet text
 #' @param testTweet if TRUE, print the tweets instead of actually tweeting them
 #' @export
 #' @importFrom twitteR tweet
 #' @importFrom lubridate now
-jobNotify <- function(jobRun, jobID, userID = "@rmflight", addNow = TRUE, testTweet = FALSE){
+jobNotify <- function(jobRun = function(){}, jobID, userID = "@rmflight", addNow = TRUE, testTweet = FALSE){
   outData <- tryCatch(jobRun, 
                       error = function(c){
                         outData <- conditionMessage(c)
@@ -43,6 +43,11 @@ jobNotify <- function(jobRun, jobID, userID = "@rmflight", addNow = TRUE, testTw
     return(outData)
   }
 }
+
+#' notify after
+#' 
+#' Instead of wrapping the function call into the tweet notify call, call it after
+#' and check for any errors using \code{geterrmessage}.
 
 #' constructs and checks tweets
 #' 
