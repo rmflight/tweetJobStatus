@@ -4,13 +4,13 @@
 #' 
 #' @param jobRun the function call to evaluate (default is empty function)
 #' @param jobID text string to associate with job call
-#' @param userID the users to notify (default is rmflight)
+#' @param userID the users to notify (default is "")
 #' @param addNow add current date-time to tweet text
 #' @param testTweet if TRUE, print the tweets instead of actually tweeting them
 #' @export
 #' @importFrom twitteR tweet
 #' @importFrom lubridate now
-jobNotify <- function(jobRun = function(){}, jobID, userID = "@rmflight", addNow = TRUE, testTweet = FALSE){
+jobNotify <- function(jobRun = function(){}, jobID, userID = "", addNow = TRUE, testTweet = FALSE){
   outData <- tryCatch(jobRun, 
                       error = function(c){
                         outData <- conditionMessage(c)
