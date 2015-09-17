@@ -1,18 +1,49 @@
 #' notifies job status
 #' 
-#' sends a tweet to rmflight the job status
+#' sends tweets to users about the job status
 #' 
-#' @param tweetText the text to include in the tweet
+#' @param jobRun the function call to evaluate
+#' @param jobID text string to associate with job call
+#' @param userID the users to notify (default is @rmflight)
+#' @param addNow add current date-time to tweet text
+#' @param testTweet if TRUE, print the tweets instead of actually tweeting them
 #' @export
 #' @importFrom twitteR tweet
 #' @importFrom lubridate now
-jobNotify <- function(tweetText, addnow=TRUE){
+jobNotify <- function(jobRun, jobID, userID = "@rmflight", addNow = TRUE, testTweet = FALSE){
+  outData <- tryCatch(jobRun, 
+                      error = function(c){
+                        outData <- conditionMessage(c)
+                        outData <- invisible(structure(outData, class = "job-error"))
+                        return(outData)
+                      })
+  jobStatus <- "COMPLETED"
+  
+  if (class(outData) == "job-error"){
+    jobStatus <- "ERRORED OUT"
+  }
+  
   t <- ""
-  if (addnow){
+  
+  if (addNow){
     t <- now()
   }
-  fullTweet <- paste("@rmflight", tweetText,  t, sep=" ")
-  tweet(fullTweet)
+  
+  tweetTexts <- vapply(userID, constructTweet, character(1), jobID, jobStatus, t)
+  
+  if (!testTweet){
+    lapply(tweetTexts, tweet)
+  } else {
+    lapply(tweetTexts, print)
+  }
+  
+  if (class(outData) == "job-error"){
+    message(outData)
+  } else {
+    return(outData)
+  }
+}
+
 #' constructs and checks tweets
 #' 
 #' given a userID, jobID, status text and datestring, constructs a tweet where the tweet
